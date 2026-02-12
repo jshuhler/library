@@ -31,8 +31,13 @@ function addToLibrary(title, author, page, read) {
 // adding books to DOM - looping through the myLibrary array and pulling each book out
 // I think this will eventually be on an event listener, so not adding [assed [arameters right now
 function updateLibraryPage(myLibrary) {
-    for (let i = 0; i < myLibrary.length; i++) {
-        bookContainer.textContent = [i];
+    // for (let i = 0; i < myLibrary.length; i++) {
+    //     bookContainer.textContent = myLibrary[i];
+    // }
+    for (const book of myLibrary) {
+        for (const key in book) {
+            console.log(`${key}: ${book[key]}`);
+        }
     }
 }
 
@@ -44,4 +49,3 @@ addToLibrary("Annihilation","Jeff VanderMeer","208","unread");
 addToLibrary("The Hobbit","JRR Tolkien","295","read");
 console.log(myLibrary);
 updateLibraryPage(myLibrary);
-console.log(myLibrary[0]);
