@@ -18,20 +18,19 @@ function Book(title, author, page, read) {
 }
 
 // adding a book created above to the myLibrary array
-function addToLibrary () {
-    var newBook = new Book();
+function addToLibrary(title, author, page, read) {
+    const newBook = new Book(title,author,page,read)
     myLibrary.push(newBook);
 }
 
-addToLibrary();
-
+addToLibrary("Annihilation","Jeff VanderMeer","208","unread");
+addToLibrary("The Hobbit","JRR Tolkien","295","read");
 
 // create unique book title
 
 // TESTING
-console.log(myLibrary);
-const theHobbit = new Book("The Hobbit","JRR Tolkien","295","read");
+// const theHobbit = new Book("The Hobbit","JRR Tolkien","295","read");
 // const annihilation = new Book("Annihilation","Jeff VanderMeer","208","unread");
-console.log(theHobbit);
+// console.log(theHobbit);
 console.log(myLibrary);
 
