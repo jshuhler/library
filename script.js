@@ -5,6 +5,7 @@ const myLibrary = [];
 let book;
 const bookContainer = document.querySelector(".book-container");
 const newBookBtn = document.getElementById('add-book-btn');
+const dialog = document.querySelector(".dialog");
 
 // CREATE A BOOK CONSTRUCTOR
 function Book(title, author, pages, read) {
@@ -44,6 +45,7 @@ function updateLibraryPage(myLibrary) {
 
 // NEW BOOK BUTTON
 newBookBtn.addEventListener('click',() => {
+    console.log("add new book button press")
     dialog.showModal();
 });
 
