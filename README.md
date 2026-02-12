@@ -8,7 +8,8 @@ Working on the library project from [The Odin Project](https://www.theodinprojec
 - [X] come up with a way to create a unique book title given an input name and a unique ID (`crypto.randomUUID()`)
 - [X] push book objects into the myLibrary array
     - [this helped](https://stackoverflow.com/questions/42866809/push-to-array-from-constructor-in-plain-javascript)
-- [ ] split the above add to library array piece into a separate function so it can be called individually.
+- [X] split the above add to library array piece into a separate function so it can be called individually.
+- [ ] figure out adding books to the HTML
 
 ### books
 - title
