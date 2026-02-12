@@ -3,12 +3,19 @@ const myLibrary = [];
 
 // VARIABLES
 let book;
+// CREATING BOOK OBJECTS
 const bookContainer = document.querySelector(".book-container");
 const newBookButton = document.getElementById('add-book-btn');
+// ADDING BOOKS MODAL
 const closeModalButton = document.getElementById('modal-close');
 const submitModalButton = document.getElementById('modal-submit');
 const addBookModal = document.querySelector(".add-book");
 const dialog = document.querySelector("dialog");
+const modalTitle = document.getElementById('title');
+const titleValue = modalTitle.value;
+const modalAuthor = document.getElementById('author');
+const modalPages = document.getElementById('pages');
+const modalRead = document.getElementById('read');
 
 // CREATE A BOOK CONSTRUCTOR
 function Book(title, author, pages, read) {
@@ -59,10 +66,12 @@ closeModalButton.addEventListener('click',() => {
 });
 
 // CLOSE AND ADD NEW BOOK TO LIBRARY
-submitModalButton.addEventListener('click', () => {
+submitModalButton.addEventListener('click', (e) => {
     console.log("submit book button press");
-    click.preventDefault();
+    console.log(titleValue);
+    e.preventDefault();    
 });
+
 
 // TESTING
 // const theHobbit = new Book("The Hobbit","JRR Tolkien","295","read");
