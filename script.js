@@ -4,8 +4,11 @@ const myLibrary = [];
 // VARIABLES
 let book;
 const bookContainer = document.querySelector(".book-container");
-const newBookBtn = document.getElementById('add-book-btn');
-const dialog = document.querySelector(".dialog");
+const newBookButton = document.getElementById('add-book-btn');
+const closeModalButton = document.getElementById('modal-close');
+const submitModalButton = document.getElementById('modal-submit');
+const addBookModal = document.querySelector(".add-book");
+const dialog = document.querySelector("dialog");
 
 // CREATE A BOOK CONSTRUCTOR
 function Book(title, author, pages, read) {
@@ -43,10 +46,22 @@ function updateLibraryPage(myLibrary) {
     }
 }
 
-// NEW BOOK BUTTON
-newBookBtn.addEventListener('click',() => {
-    console.log("add new book button press")
+// OPEN NEW BOOK MODAL
+newBookButton.addEventListener('click',() => {
+    console.log("add new book button press");
     dialog.showModal();
+});
+
+// CLOSE NEW BOOK MODAL WITHOUT ADDING BOOK
+closeModalButton.addEventListener('click',() => {
+    console.log("close modal button press");
+    dialog.close();
+});
+
+// CLOSE AND ADD NEW BOOK TO LIBRARY
+submitModalButton.addEventListener('click', () => {
+    console.log("submit book button press");
+    click.preventDefault();
 });
 
 // TESTING
