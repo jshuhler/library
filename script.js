@@ -3,19 +3,20 @@ const myLibrary = [];
 
 // VARIABLES
 let book;
+
 // CREATING BOOK OBJECTS
 const bookContainer = document.querySelector(".book-container");
 const newBookButton = document.getElementById('add-book-btn');
+
 // ADDING BOOKS MODAL
 const closeModalButton = document.getElementById('modal-close');
 const submitModalButton = document.getElementById('modal-submit');
 const addBookModal = document.querySelector(".add-book");
 const dialog = document.querySelector("dialog");
-const modalTitle = document.getElementById('title');
-const titleValue = modalTitle.value;
-const modalAuthor = document.getElementById('author');
-const modalPages = document.getElementById('pages');
-const modalRead = document.getElementById('read');
+const modalTitle = document.getElementById('title').value;
+const modalAuthor = document.getElementById('author').value;
+const modalPages = document.getElementById('pages').value;
+const modalRead = document.getElementById('read').value;
 
 // CREATE A BOOK CONSTRUCTOR
 function Book(title, author, pages, read) {
@@ -28,7 +29,6 @@ function Book(title, author, pages, read) {
     this.read = read;
     this.id = crypto.randomUUID()
 }
-
 
 // ADDING A BOOK TO LIBRARY ARRAY
 function addToLibrary(title, author, pages, read) {
@@ -68,7 +68,6 @@ closeModalButton.addEventListener('click',() => {
 // CLOSE AND ADD NEW BOOK TO LIBRARY
 submitModalButton.addEventListener('click', (e) => {
     console.log("submit book button press");
-    console.log(titleValue);
     e.preventDefault();    
 });
 
@@ -81,3 +80,4 @@ addToLibrary("Annihilation","Jeff VanderMeer","208","read");
 addToLibrary("The Hobbit","JRR Tolkien","295","read");
 console.log(myLibrary);
 updateLibraryPage(myLibrary);
+console.log(modalTitle, modalAuthor, modalPages, modalRead)
