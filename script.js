@@ -9,14 +9,14 @@ const bookContainer = document.querySelector(".book-container");
 const newBookButton = document.getElementById('add-book-btn');
 
 // ADDING BOOKS MODAL
-const closeModalButton = document.getElementById('modal-close');
-const submitModalButton = document.getElementById('modal-submit');
-const addBookModal = document.querySelector(".add-book");
-const dialog = document.querySelector("dialog");
-const modalTitle = document.getElementById('title').value;
-const modalAuthor = document.getElementById('author').value;
-const modalPages = document.getElementById('pages').value;
-const modalRead = document.getElementById('read').value;
+const closeModalButton = document.getElementById('modal-close'); // to close the new book modal without adding a book
+const submitModalButton = document.getElementById('modal-submit'); // to submit a new book to the library array
+const addBookModal = document.querySelector(".add-book"); // the form itself, I don't think this is needed
+const dialog = document.querySelector("dialog"); // to open the new book modal
+const modalTitle = document.getElementById('title').value; // new book title
+const modalAuthor = document.getElementById('author').value; // new book author
+const modalPages = document.getElementById('pages').value; //new book page count
+const modalRead = document.getElementById('read').value; // new book read status
 
 // CREATE A BOOK CONSTRUCTOR
 function Book(title, author, pages, read) {
@@ -68,9 +68,9 @@ closeModalButton.addEventListener('click',() => {
 // CLOSE AND ADD NEW BOOK TO LIBRARY
 submitModalButton.addEventListener('click', (e) => {
     console.log("submit book button press");
-    e.preventDefault();    
+    console.log(`${modalTitle}`);
+    // e.preventDefault();
 });
-
 
 // TESTING
 // const theHobbit = new Book("The Hobbit","JRR Tolkien","295","read");
