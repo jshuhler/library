@@ -13,10 +13,10 @@ const closeModalButton = document.getElementById('modal-close'); // to close the
 const submitModalButton = document.getElementById('modal-submit'); // to submit a new book to the library array
 const addBookModal = document.querySelector(".add-book"); // the form itself, I don't think this is needed
 const dialog = document.querySelector("dialog"); // to open the new book modal
-const modalTitle = document.getElementById('title').value; // new book title
-const modalAuthor = document.getElementById('author').value; // new book author
-const modalPages = document.getElementById('pages').value; //new book page count
-const modalRead = document.getElementById('read').value; // new book read status
+let modalTitle;
+let modalAuthor;
+let modalPages;
+let modalRead;
 
 // CREATE A BOOK CONSTRUCTOR
 function Book(title, author, pages, read) {
@@ -67,17 +67,25 @@ closeModalButton.addEventListener('click',() => {
 
 // CLOSE AND ADD NEW BOOK TO LIBRARY
 submitModalButton.addEventListener('click', (e) => {
-    console.log("submit book button press");
-    console.log(`${modalTitle}`);
-    // e.preventDefault();
+    console.log("submit book button press"); // testing - remove this later!
+    modalTitle = document.getElementById('title').value;
+    modalAuthor = document.getElementById('author').value; // new book author
+    modalPages = document.getElementById('pages').value; //new book page count
+    modalRead = document.getElementById('read').value; // new book read status
+    addToLibrary(modalTitle, modalAuthor, modalPages, modalRead);
+    updateLibraryPage(myLibrary);
+    addBookModal.reset();
+    dialog.close();
+    console.log(`${modalTitle}, ${modalAuthor}, ${modalPages}, ${modalRead}`);  // testing - remove this later! 
+    e.preventDefault();
 });
 
 // TESTING
 // const theHobbit = new Book("The Hobbit","JRR Tolkien","295","read");
 // const annihilation = new Book("Annihilation","Jeff VanderMeer","208","unread");
-addToLibrary("House of Leaves","Mark Z. Danielewski","709","unread")
-addToLibrary("Annihilation","Jeff VanderMeer","208","read");
-addToLibrary("The Hobbit","JRR Tolkien","295","read");
+// addToLibrary("House of Leaves","Mark Z. Danielewski","709","unread")
+// addToLibrary("Annihilation","Jeff VanderMeer","208","read");
+// addToLibrary("The Hobbit","JRR Tolkien","295","read");
 console.log(myLibrary);
 updateLibraryPage(myLibrary);
-console.log(modalTitle, modalAuthor, modalPages, modalRead)
+console.log(`after click: ${modalTitle}`)
