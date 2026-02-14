@@ -38,6 +38,7 @@ function addToLibrary(title, author, pages, read) {
 
 // UPDATE LIBRARY DISPLAY
 function updateLibraryPage(myLibrary) {
+    bookContainer.innerHTML = "";
     for (const book of myLibrary) {
         const bookCard = document.createElement("div");
         bookCard.classList = "book-card";
@@ -46,7 +47,6 @@ function updateLibraryPage(myLibrary) {
         for (const key in book) {
             const bookValue = document.createElement("div");
             bookValue.classList = "book-value";
-            // bookTitle.style.cssText placeholder
             bookCard.appendChild(bookValue);
             bookValue.textContent = `${key}: ${book[key]}`;
         }
@@ -67,8 +67,7 @@ closeModalButton.addEventListener('click',() => {
 
 // CLOSE AND ADD NEW BOOK TO LIBRARY
 submitModalButton.addEventListener('click', (e) => {
-    console.log("submit book button press"); // testing - remove this later!
-    modalTitle = document.getElementById('title').value;
+    modalTitle = document.getElementById('title').value; // new book title
     modalAuthor = document.getElementById('author').value; // new book author
     modalPages = document.getElementById('pages').value; //new book page count
     modalRead = document.getElementById('read').value; // new book read status
@@ -76,7 +75,6 @@ submitModalButton.addEventListener('click', (e) => {
     updateLibraryPage(myLibrary);
     addBookModal.reset();
     dialog.close();
-    console.log(`${modalTitle}, ${modalAuthor}, ${modalPages}, ${modalRead}`);  // testing - remove this later! 
     e.preventDefault();
 });
 
@@ -86,6 +84,6 @@ submitModalButton.addEventListener('click', (e) => {
 // addToLibrary("House of Leaves","Mark Z. Danielewski","709","unread")
 // addToLibrary("Annihilation","Jeff VanderMeer","208","read");
 // addToLibrary("The Hobbit","JRR Tolkien","295","read");
-console.log(myLibrary);
-updateLibraryPage(myLibrary);
-console.log(`after click: ${modalTitle}`)
+// console.log(myLibrary);
+// updateLibraryPage(myLibrary);
+// console.log(`after click: ${modalTitle}`)
