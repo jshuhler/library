@@ -46,7 +46,7 @@ function updateLibraryPage(myLibrary) {
         for (const key in book) { 
             if (key === 'id') { // so the id doesn't appear on the bookCard
                 continue;
-            }
+            } 
             const bookValue = document.createElement("div");
             bookValue.classList = "book-value";
             bookCard.appendChild(bookValue);

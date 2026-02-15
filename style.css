@@ -139,9 +139,13 @@ dialog fieldset {
 
 .form-item {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: baseline;
     width: 100%;
+}
+
+dialog #form-read {
+    width: 50%;
 }
 
 label {
