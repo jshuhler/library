@@ -44,7 +44,7 @@ function updateLibraryPage(myLibrary) {
         bookCard.classList = "book-card";
         // bookCard.style.cssText = "padding-bottom: 20px";
         bookContainer.appendChild(bookCard);
-        for (const key in book) {
+        for (const key in book) { //figure out how to stop it from pushing the id key to the book-card
             const bookValue = document.createElement("div");
             bookValue.classList = "book-value";
             bookCard.appendChild(bookValue);

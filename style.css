@@ -12,12 +12,13 @@
 :root {
     --card-color: #f5f5f5;
     --body-color: #e2e8f0;
-    --h1-font-size: 1.75em;
+    --h1-font-size: 2em;
     --h2-font-size: 1.45em;
     --h3-font-size: 1.1em;
     --h4-font-size: 0.8em;
     --icon-size: 2.5em;
     --button-radius: 8px;
+    --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -38,19 +39,41 @@ h2 {
 h3 {
     font-size: var(--h3-font-size);
 }
+
+button,
+a,
+img.light-dark-mode,
+img.delete:hover {
+    cursor: pointer;
+}
+
+a {
+    color: #1d1d1d;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #1d1d1d;
+}
+
+a:hover {
+    text-decoration: overline;
+}
+
 /* ===================================
    HEADER
    =================================== */
-
 .header,
 .header-right {
     display: flex;
 }
+
 .header {
+    flex-wrap: wrap;
     justify-content: space-between;
     background-color: var(--card-color);
     padding: 45px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     position: relative;
     z-index: 1;
 }
@@ -61,26 +84,34 @@ h3 {
 
 .header img {
     height: var(--h1-font-size);
-    padding: 0 0 0 35px;
+    margin: 0 0 0 35px;
 }
 
 .header button {
     padding: 8px 16px;
     border-radius: var(--button-radius);
+    border: solid 1px;
 }
 
 /* ===================================
-   BODY
+   BODY & BOOK CARDS
    =================================== */
-
-
 .container {
     background-color: var(--body-color);
     height: 100vh;
 }
 
+.book-container {
+    display: flex;
+    margin: 30px;
+}
+
 .book-card {
     background: var(--card-color);
+    margin: 15px;
+    padding: 15px;
+    box-shadow: var(--box-shadow);
+    border-radius: 16px;
 }
 
 /* ===================================
@@ -91,7 +122,8 @@ dialog {
     padding: 20px;
     border: none;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
+    margin: auto;
 }
 
 dialog legend {
@@ -131,9 +163,15 @@ input:focus {
     border-bottom: 1px solid #0075fc;
 }
 
+dialog .modal-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 dialog button {
     border-radius: var(--button-radius);
-    padding: 4px 8px;
+    padding: 5px 12px;
+    border: solid 1px;
 }
 
 dialog::backdrop {
@@ -145,4 +183,8 @@ dialog::backdrop {
    =================================== */
 .footer {
     background-color: var(--body-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 5px 0;
 }
