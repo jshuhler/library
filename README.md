@@ -10,7 +10,7 @@ Working on the library project from [The Odin Project](https://www.theodinprojec
     - [this helped](https://stackoverflow.com/questions/42866809/push-to-array-from-constructor-in-plain-javascript)
 - [X] split the above add to library array piece into a separate function so it can be called individually.
 - [X] figure out adding books to the HTML
-- [ ] change read/unread from picklist to single checkbox
+- [X] change read/unread from picklist to single checkbox
 - [ ] add functionality for changing read/unread from card, pushing update to library
 - [ ] style cards, changing styling/capitalization of headers for labels
 - [ ] how can I add an icon to the cards when they're being created via javascript?
@@ -21,6 +21,9 @@ Working on the library project from [The Odin Project](https://www.theodinprojec
 - page count
 - read
 - id
+
+### removing book based on the id
+- it'll have to iterate through the myLibrary array, check each id value for the one that it's looking for, and when it finds it, delete that entire book-card element. Which is going to contain the new delete button that I'm building anyway, so that won't be an issue. I'll be able to use some array method for that.
 
 ### dark mode
 ```css

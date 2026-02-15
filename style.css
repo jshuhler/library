@@ -107,11 +107,37 @@ a:hover {
 }
 
 .book-card {
+    display: flex;
+    flex-direction: column;
     background: var(--card-color);
     margin: 15px;
     padding: 15px;
     box-shadow: var(--box-shadow);
     border-radius: 16px;
+}
+
+.book-value {
+    padding: 10px;
+}
+
+.book-card .delete-button,
+.book-card img {
+    height: var(--h2-font-size);
+    justify-content: flex-end;
+}
+
+.book-card .delete-button {
+    display: flex;
+    background-color: var(--card-color);
+    border: none;
+}
+
+.book-card .delete-button:hover {
+    cursor: default;
+}
+
+.book-card img:hover {
+    cursor: pointer;
 }
 
 /* ===================================
@@ -152,7 +178,8 @@ label {
     text-transform: uppercase;
 }
 
-input {
+input[type="text"],
+input[type="number"] {
     margin: 0 0 20px 0;
     padding: 5px;
     font-weight: 300;

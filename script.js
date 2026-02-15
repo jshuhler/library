@@ -3,6 +3,8 @@ const myLibrary = [];
 
 // VARIABLES
 let book;
+let deleteButton;
+let bookCard;
 
 // CREATING BOOK OBJECTS
 const bookContainer = document.querySelector(".book-container");
@@ -41,37 +43,52 @@ function updateLibraryPage(myLibrary) {
     bookContainer.innerHTML = "";
     for (const book of myLibrary) {
         const bookCard = document.createElement("div");
-        bookCard.classList = "book-card";
+        bookCard.classList.add("book-card");
         bookContainer.appendChild(bookCard);
         for (const key in book) { 
             if (key === 'id') { // so the id doesn't appear on the bookCard
                 continue;
             } else if (key === 'read') { // the empty `" "` in the DOM is coming from this code block somewhere.
                 console.log(book[key]);
+                const bookValue = document.createElement("div");
+                bookValue.classList.add("book-value");
                 const bookRead = document.createElement("input");
                 bookRead.type = "checkbox";
-                bookRead.classList = "book-value";
+                bookRead.classList.add("book-status");
                 bookRead.checked = book.read;
-                bookCard.appendChild(bookRead);
+                bookValue.appendChild(bookRead);
+                bookCard.appendChild(bookValue);
             } else {
             const bookValue = document.createElement("div");
-            bookValue.classList = "book-value";
+            bookValue.classList.add("book-value");
             bookValue.textContent = `${key}: ${book[key]}`;
             bookCard.appendChild(bookValue);
             }
         }
+        createDeleteButton(bookCard);
     }
+}
+
+// CREATE DELETE BUTTON FOR EACH BOOK CARD
+// created to take too much functionality out of updateLibraryPage
+function createDeleteButton(bookCard) {
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
+    const deleteIcon = document.createElement("img");
+    deleteIcon.setAttribute("src","./img/trashcan.png");
+    deleteIcon.setAttribute("alt","An image of a trashcan");
+    deleteButton.appendChild(deleteIcon);
+    bookCard.appendChild(deleteButton);
+    return deleteButton;
 }
 
 // OPEN NEW BOOK MODAL
 newBookButton.addEventListener('click',() => {
-    console.log("add new book button press");
     dialog.showModal();
 });
 
 // CLOSE NEW BOOK MODAL WITHOUT ADDING BOOK
-closeModalButton.addEventListener('click',() => {
-    console.log("close modal button press");
+closeModalButton.addEventListener('click',() => { //the close button is clearing the library page right now for some reason?
     dialog.close();
 });
 
