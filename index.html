@@ -12,10 +12,16 @@
     <title>Library</title>
 </head>
 <body>
-    <div class="header">Header goes here!</div>
+    <div class="header">
+        <div class="header-left">
+            <h1 class="header-title">Your Bookshelf</h1>
+        </div>
+        <div class="header-right">
+            <button id="add-book-btn">Add Book</button>
+            <img src="./img/day-and-night.png" alt="Button to change between Light and Dark Modes" class="light-dark-mode">
+        </div>
+    </div>
     <div class="container">
-        <h1 class="title">Bookshelf</h1>
-        <button id="add-book-btn">Add Book to Library</button>
         <div class="book-container">
         </div>
         <dialog>
@@ -37,7 +43,7 @@
                     <div class="form-item" id="form-read">
                         <label for="read">Book Status</label>
                         <select name="read" id="read" required>
-                            <option value="">--Choose an option--</option>
+                            <option value="">-- Have you read this? --</option>
                             <option value="Read">Read</option>
                             <option value="Unread">Unread</option>
                         </select>

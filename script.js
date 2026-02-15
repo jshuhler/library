@@ -42,7 +42,7 @@ function updateLibraryPage(myLibrary) {
     for (const book of myLibrary) {
         const bookCard = document.createElement("div");
         bookCard.classList = "book-card";
-        bookCard.style.cssText = "padding-bottom: 20px";
+        // bookCard.style.cssText = "padding-bottom: 20px";
         bookContainer.appendChild(bookCard);
         for (const key in book) {
             const bookValue = document.createElement("div");

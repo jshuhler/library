@@ -9,6 +9,17 @@
     padding: 0;
 }
 
+:root {
+    --card-color: #f5f5f5;
+    --body-color: #e2e8f0;
+    --h1-font-size: 1.75em;
+    --h2-font-size: 1.45em;
+    --h3-font-size: 1.1em;
+    --h4-font-size: 0.8em;
+    --icon-size: 2.5em;
+    --button-radius: 8px;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -17,5 +28,121 @@ body {
 }
 
 h1 {
-    /* padding: 0 0 40px 0; */
+    font-size: var(--h1-font-size);
+}
+
+h2 {
+    font-size: var(--h2-font-size);
+}
+
+h3 {
+    font-size: var(--h3-font-size);
+}
+/* ===================================
+   HEADER
+   =================================== */
+
+.header,
+.header-right {
+    display: flex;
+}
+.header {
+    justify-content: space-between;
+    background-color: var(--card-color);
+    padding: 45px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+.header-right {
+    align-items: center;
+}
+
+.header img {
+    height: var(--h1-font-size);
+    padding: 0 0 0 35px;
+}
+
+.header button {
+    padding: 8px 16px;
+    border-radius: var(--button-radius);
+}
+
+/* ===================================
+   BODY
+   =================================== */
+
+
+.container {
+    background-color: var(--body-color);
+    height: 100vh;
+}
+
+.book-card {
+    background: var(--card-color);
+}
+
+/* ===================================
+   MODAL
+   =================================== */
+
+dialog {
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+dialog legend {
+    font-size: var(--h2-font-size);
+    padding: 0 0 20px 0;
+    align-items: center;
+}
+
+dialog fieldset {
+    border: none;
+    padding: 0 0 20px 0 ;
+}
+
+.form-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    width: 100%;
+}
+
+label {
+    text-transform: uppercase;
+}
+
+input {
+    margin: 0 0 20px 0;
+    padding: 5px;
+    font-weight: 300;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #cccccc;
+    font-size: var(--h3-font-size);
+}
+
+input:focus {
+    outline: none;
+    border-bottom: 1px solid #0075fc;
+}
+
+dialog button {
+    border-radius: var(--button-radius);
+    padding: 4px 8px;
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(3px);
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+.footer {
+    background-color: var(--body-color);
 }
