@@ -85,6 +85,11 @@ function createDeleteButton(bookCard) {
     return deleteButton;
 }
 
+// DELETE A SINGLE BOOK CARD
+deleteButton.addEventListener('click'), () => {
+    console.log("Trash can clicked");
+}
+
 // OPEN NEW BOOK MODAL
 newBookButton.addEventListener('click',() => {
     dialog.showModal();
@@ -95,7 +100,7 @@ closeModalButton.addEventListener('click',() => { //the close button is clearing
     dialog.close();
 });
 
-// CLOSE AND ADD NEW BOOK TO LIBRARY
+// CLOSE MODAL AND ADD NEW BOOK TO LIBRARY
 submitModalButton.addEventListener('click', (e) => {
     modalTitle = document.getElementById('title').value; // new book title
     modalAuthor = document.getElementById('author').value; // new book author
