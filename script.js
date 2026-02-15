@@ -42,13 +42,16 @@ function updateLibraryPage(myLibrary) {
     for (const book of myLibrary) {
         const bookCard = document.createElement("div");
         bookCard.classList = "book-card";
-        // bookCard.style.cssText = "padding-bottom: 20px";
         bookContainer.appendChild(bookCard);
-        for (const key in book) { //figure out how to stop it from pushing the id key to the book-card
+        for (const key in book) { 
+            if (key === 'id') { // so the id doesn't appear on the bookCard
+                continue;
+            }
             const bookValue = document.createElement("div");
             bookValue.classList = "book-value";
             bookCard.appendChild(bookValue);
             bookValue.textContent = `${key}: ${book[key]}`;
+            // bookCard.style.cssText = "padding: 0 0 10px 0; "
         }
     }
 }
