@@ -46,12 +46,19 @@ function updateLibraryPage(myLibrary) {
         for (const key in book) { 
             if (key === 'id') { // so the id doesn't appear on the bookCard
                 continue;
-            } 
+            } else if (key === 'read') { // the empty `" "` in the DOM is coming from this code block somewhere.
+                console.log(book[key]);
+                const bookRead = document.createElement("input");
+                bookRead.type = "checkbox";
+                bookRead.classList = "book-value";
+                bookRead.checked = book.read;
+                bookCard.appendChild(bookRead);
+            } else {
             const bookValue = document.createElement("div");
             bookValue.classList = "book-value";
-            bookCard.appendChild(bookValue);
             bookValue.textContent = `${key}: ${book[key]}`;
-            // bookCard.style.cssText = "padding: 0 0 10px 0; "
+            bookCard.appendChild(bookValue);
+            }
         }
     }
 }
@@ -73,7 +80,7 @@ submitModalButton.addEventListener('click', (e) => {
     modalTitle = document.getElementById('title').value; // new book title
     modalAuthor = document.getElementById('author').value; // new book author
     modalPages = document.getElementById('pages').value; //new book page count
-    modalRead = document.getElementById('read').value; // new book read status
+    modalRead = document.getElementById('read').checked; // new book read status
     addToLibrary(modalTitle, modalAuthor, modalPages, modalRead);
     updateLibraryPage(myLibrary);
     addBookModal.reset();
