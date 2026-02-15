@@ -120,6 +120,11 @@ a:hover {
     padding: 10px;
 }
 
+.book-card .delete-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .book-card .delete-button,
 .book-card img {
     height: var(--h2-font-size);
@@ -127,9 +132,9 @@ a:hover {
 }
 
 .book-card .delete-button {
-    display: flex;
     background-color: var(--card-color);
     border: none;
+    margin-top: 5px;
 }
 
 .book-card .delete-button:hover {

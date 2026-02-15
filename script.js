@@ -72,13 +72,16 @@ function updateLibraryPage(myLibrary) {
 // CREATE DELETE BUTTON FOR EACH BOOK CARD
 // created to take too much functionality out of updateLibraryPage
 function createDeleteButton(bookCard) {
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add("delete-button");
-    const deleteIcon = document.createElement("img");
-    deleteIcon.setAttribute("src","./img/trashcan.png");
-    deleteIcon.setAttribute("alt","An image of a trashcan");
-    deleteButton.appendChild(deleteIcon);
-    bookCard.appendChild(deleteButton);
+    const deleteContainer = document.createElement("div"); // create button container
+    deleteContainer.classList.add("delete-container"); // add container class
+    const deleteButton = document.createElement("button"); // create button
+    deleteButton.classList.add("delete-button"); // add button class
+    const deleteIcon = document.createElement("img"); // create img
+    deleteIcon.setAttribute("src","./img/trashcan.png"); // img attribute
+    deleteIcon.setAttribute("alt","An image of a trashcan"); // img attribute
+    deleteButton.appendChild(deleteIcon); // nest img in button
+    deleteContainer.appendChild(deleteButton); // nest button in container
+    bookCard.appendChild(deleteContainer); // nest button in book-card
     return deleteButton;
 }
 
