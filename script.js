@@ -3,8 +3,8 @@ const myLibrary = [];
 
 // VARIABLES
 let book;
-let deleteButton;
 let bookCard;
+let deleteButton;
 
 // CREATING BOOK OBJECTS
 const bookContainer = document.querySelector(".book-container");
@@ -19,6 +19,9 @@ let modalTitle;
 let modalAuthor;
 let modalPages;
 let modalRead;
+
+// BOOK CARD ELEMENTS
+// const deleteButton = document.createElement("button"); // create button
 
 // CREATE A BOOK CONSTRUCTOR
 function Book(title, author, pages, read) {
@@ -38,7 +41,7 @@ function addToLibrary(title, author, pages, read) {
     myLibrary.push(newBook);
 }
 
-// UPDATE LIBRARY DISPLAY
+// UPDATE LIBRARY DISPLAY AND ADD BOOK CARD
 function updateLibraryPage(myLibrary) {
     bookContainer.innerHTML = "";
     for (const book of myLibrary) {
@@ -75,6 +78,7 @@ function createDeleteButton(bookCard) {
     const deleteContainer = document.createElement("div"); // create button container
     deleteContainer.classList.add("delete-container"); // add container class
     const deleteButton = document.createElement("button"); // create button
+
     deleteButton.classList.add("delete-button"); // add button class
     const deleteIcon = document.createElement("img"); // create img
     deleteIcon.setAttribute("src","./img/trashcan.png"); // img attribute
@@ -85,10 +89,11 @@ function createDeleteButton(bookCard) {
     return deleteButton;
 }
 
-// DELETE A SINGLE BOOK CARD
-deleteButton.addEventListener('click'), () => {
-    console.log("Trash can clicked");
-}
+// DELETE A SINGLE BOOK CARD CLICK LISTENER
+// probably use splice()
+// deleteButton.addEventListener('click', () => {
+//     console.log("Trash can clicked");
+// });
 
 // OPEN NEW BOOK MODAL
 newBookButton.addEventListener('click',() => {
@@ -114,11 +119,7 @@ submitModalButton.addEventListener('click', (e) => {
 });
 
 // TESTING
-// const theHobbit = new Book("The Hobbit","JRR Tolkien","295","read");
-// const annihilation = new Book("Annihilation","Jeff VanderMeer","208","unread");
-// addToLibrary("House of Leaves","Mark Z. Danielewski","709","unread")
-// addToLibrary("Annihilation","Jeff VanderMeer","208","read");
-// addToLibrary("The Hobbit","JRR Tolkien","295","read");
-// console.log(myLibrary);
+// addToLibrary("House of Leaves","Mark Z. Danielewski","709","unread");
+// // addToLibrary("Annihilation","Jeff VanderMeer","208","read");
+// // addToLibrary("The Hobbit","JRR Tolkien","295","read");
 // updateLibraryPage(myLibrary);
-// console.log(`after click: ${modalTitle}`)
