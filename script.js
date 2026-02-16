@@ -4,7 +4,6 @@ const myLibrary = [];
 // VARIABLES
 let book;
 let bookCard;
-let deleteButton;
 
 // CREATING BOOK OBJECTS
 const bookContainer = document.querySelector(".book-container");
@@ -21,7 +20,6 @@ let modalPages;
 let modalRead;
 
 // BOOK CARD ELEMENTS
-// const deleteButton = document.createElement("button"); // create button
 
 // CREATE A BOOK CONSTRUCTOR
 function Book(title, author, pages, read) {
@@ -78,8 +76,12 @@ function createDeleteButton(bookCard) {
     const deleteContainer = document.createElement("div"); // create button container
     deleteContainer.classList.add("delete-container"); // add container class
     const deleteButton = document.createElement("button"); // create button
-
     deleteButton.classList.add("delete-button"); // add button class
+
+    deleteButton.addEventListener('click', () => {
+        console.log("Trash can click");
+    });
+
     const deleteIcon = document.createElement("img"); // create img
     deleteIcon.setAttribute("src","./img/trashcan.png"); // img attribute
     deleteIcon.setAttribute("alt","An image of a trashcan"); // img attribute
@@ -88,12 +90,6 @@ function createDeleteButton(bookCard) {
     bookCard.appendChild(deleteContainer); // nest button in book-card
     return deleteButton;
 }
-
-// DELETE A SINGLE BOOK CARD CLICK LISTENER
-// probably use splice()
-// deleteButton.addEventListener('click', () => {
-//     console.log("Trash can clicked");
-// });
 
 // OPEN NEW BOOK MODAL
 newBookButton.addEventListener('click',() => {
@@ -119,7 +115,7 @@ submitModalButton.addEventListener('click', (e) => {
 });
 
 // TESTING
-// addToLibrary("House of Leaves","Mark Z. Danielewski","709","unread");
-// // addToLibrary("Annihilation","Jeff VanderMeer","208","read");
-// // addToLibrary("The Hobbit","JRR Tolkien","295","read");
-// updateLibraryPage(myLibrary);
+addToLibrary("House of Leaves","Mark Z. Danielewski","709","unread");
+addToLibrary("Annihilation","Jeff VanderMeer","208","read");
+addToLibrary("The Hobbit","JRR Tolkien","295","read");
+updateLibraryPage(myLibrary);
