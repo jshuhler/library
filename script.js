@@ -76,8 +76,18 @@ function createDeleteButton(bookCard, book) {
     const deleteButton = document.createElement("button"); // create button
     deleteButton.classList.add("delete-button"); // add button class
     deleteButton.setAttribute("data-id",book.id);
-    deleteButton.addEventListener('click', () => {
+    
+    deleteButton.addEventListener('click', () => { // adding event listener for the button immediately after it's created before nodes added to it
         console.log("Trash can click");
+        console.log(myLibrary);
+        const bookToRemove = myLibrary.find((currentBook) => currentBook.id === book.id);
+        console.log(bookToRemove);
+        const index = myLibrary.indexOf(bookToRemove);
+        console.log(index);
+        if (index > -1) { // only splice array when item is found
+            myLibrary.splice(index, 1); 
+        };
+        updateLibraryPage(myLibrary);
     });
 
     const deleteIcon = document.createElement("img"); // create img
