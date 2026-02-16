@@ -19,19 +19,17 @@ let modalAuthor;
 let modalPages;
 let modalRead;
 
-// BOOK CARD ELEMENTS
-
 // CREATE A BOOK CONSTRUCTOR
 function Book(title, author, pages, read) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor.");
-    }
+    };
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.id = crypto.randomUUID()
-}
+    this.id = crypto.randomUUID();
+};
 
 // ADDING A BOOK TO LIBRARY ARRAY
 function addToLibrary(title, author, pages, read) {
@@ -50,7 +48,6 @@ function updateLibraryPage(myLibrary) {
             if (key === 'id') { // so the id doesn't appear on the bookCard
                 continue;
             } else if (key === 'read') { // the empty `" "` in the DOM is coming from this code block somewhere.
-                console.log(book[key]);
                 const bookValue = document.createElement("div");
                 bookValue.classList.add("book-value");
                 const bookRead = document.createElement("input");
@@ -66,18 +63,19 @@ function updateLibraryPage(myLibrary) {
             bookCard.appendChild(bookValue);
             }
         }
-        createDeleteButton(bookCard);
+        createDeleteButton(bookCard, book);
     }
 }
 
 // CREATE DELETE BUTTON FOR EACH BOOK CARD
 // created to take too much functionality out of updateLibraryPage
-function createDeleteButton(bookCard) {
+function createDeleteButton(bookCard, book) {
+    console.log(book.id); //testing to make sure book.id is being passed correctly
     const deleteContainer = document.createElement("div"); // create button container
     deleteContainer.classList.add("delete-container"); // add container class
     const deleteButton = document.createElement("button"); // create button
     deleteButton.classList.add("delete-button"); // add button class
-
+    deleteButton.setAttribute("data-id",book.id);
     deleteButton.addEventListener('click', () => {
         console.log("Trash can click");
     });
