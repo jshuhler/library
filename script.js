@@ -5,6 +5,7 @@ const myLibrary = [];
 let book;
 let bookCard;
 let bookStatus;
+let cardLabel;
 
 // CREATING BOOK OBJECTS
 const bookContainer = document.querySelector(".book-container");
@@ -19,6 +20,13 @@ let modalTitle;
 let modalAuthor;
 let modalPages;
 let modalRead;
+
+// OBJECT FOR CARD DISPLAY 
+const labels = {
+    title: "Title: ",
+    author: "Author: ",
+    pages: "Page Count: ",
+};
 
 // CREATE A BOOK CONSTRUCTOR
 function Book(title, author, pages, read) {
@@ -39,7 +47,7 @@ function addToLibrary(title, author, pages, read) {
 }
 
 // CREATE BOOK CARD AND ADD IT TO LIBRARY PAGE WITH EACH MODAL SUBMIT
-function updateLibraryPage(myLibrary) {
+function updateLibraryPage(myLibrary    ) {
     bookContainer.innerHTML = "";
     for (const book of myLibrary) {
         const bookCard = document.createElement("div");
@@ -49,24 +57,25 @@ function updateLibraryPage(myLibrary) {
             if (key === 'id') { // so the id doesn't appear on the bookCard
                 continue;
             } else if (key === 'read') { // the empty `" "` in the DOM is coming from this code block somewhere.
-                // if the key is read, then create the div to put stuff in, then do an if statement if the book.read === true, append `Status: Read`, otherwise, `Status: Unread`
                 const bookValue = document.createElement("div");
                 bookValue.classList.add("book-value");
 
                 if (book.read === true) {
-
-                }
-
-                const bookRead = document.createElement("input");
-                bookRead.type = "checkbox";
-                bookRead.classList.add("book-status");
-                bookRead.checked = book.read;
-                bookValue.appendChild(bookRead);
+                    bookValue.textContent = `Status: Read`;
+                } else if (book.read === false) {
+                    bookValue.textContent = `Status: Unread`;
+                };
+                // const bookRead = document.createElement("input");
+                // bookRead.type = "checkbox";
+                // bookRead.classList.add("book-status");
+                // bookRead.checked = book.read;
+                // bookValue.appendChild(bookRead);
                 bookCard.appendChild(bookValue);
             } else {
             const bookValue = document.createElement("div");
             bookValue.classList.add("book-value");
-            bookValue.textContent = `${key}: ${book[key]}`;
+            cardLabel = `${key}`;
+            bookValue.textContent = `${labels[cardLabel]}${book[key]}`;
             bookCard.appendChild(bookValue);
             }
         }
