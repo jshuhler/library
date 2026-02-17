@@ -40,6 +40,10 @@ function Book(title, author, pages, read) {
     this.id = crypto.randomUUID();
 };
 
+Book.prototype.toggleRead = function () {
+    console.log(`${this.title} toggleRead just happened.`);
+}
+
 // ADDING A BOOK TO LIBRARY ARRAY
 function addToLibrary(title, author, pages, read) {
     const newBook = new Book(title,author,pages,read)
@@ -47,45 +51,53 @@ function addToLibrary(title, author, pages, read) {
 }
 
 // CREATE BOOK CARD AND ADD IT TO LIBRARY PAGE WITH EACH MODAL SUBMIT
-function updateLibraryPage(myLibrary    ) {
+function updateLibraryPage(myLibrary) {
     bookContainer.innerHTML = "";
     for (const book of myLibrary) {
         const bookCard = document.createElement("div");
         bookCard.classList.add("book-card");
         bookContainer.appendChild(bookCard);
         for (const key in book) { 
-            if (key === 'id') { // so the id doesn't appear on the bookCard
-                continue;
-            } else if (key === 'read') { // the empty `" "` in the DOM is coming from this code block somewhere.
+            if (Object.hasOwn(book,key) === true) { // hiding the prototype function from the bookCard
+                if (key === 'id') { // so the id doesn't appear on the bookCard
+                    continue;
+                } else if (key === 'read') { // the empty `" "` in the DOM is coming from this code block somewhere.
+                    const bookValue = document.createElement("div");
+                    bookValue.classList.add("book-value");
+                    if (book.read === true) {
+                        bookValue.innerHTML = `<strong>Status:</strong> Read`;
+                    } else if (book.read === false) {
+                        bookValue.innerHTML = `<strong>Status:</strong> Unread`;
+                    };
+                    bookCard.appendChild(bookValue);
+                } else {
                 const bookValue = document.createElement("div");
                 bookValue.classList.add("book-value");
-
-                if (book.read === true) {
-                    bookValue.textContent = `Status: Read`;
-                } else if (book.read === false) {
-                    bookValue.textContent = `Status: Unread`;
-                };
+                cardLabel = `${key}`;
+                bookValue.innerHTML = `<strong>${labels[cardLabel]}</strong>${book[key]}`;
                 bookCard.appendChild(bookValue);
+                }
             } else {
-            const bookValue = document.createElement("div");
-            bookValue.classList.add("book-value");
-            cardLabel = `${key}`;
-            bookValue.innerHTML = `<strong>${labels[cardLabel]}</strong>${book[key]}`;
-            bookCard.appendChild(bookValue);
-            }
+                continue;
+            }  
         }
         createReadButton(bookCard);
         createDeleteButton(bookCard, book);
-    }
-}
+    };
+};
 
 // CREATE READ BUTTON FOR EACH BOOK CARD
-function createReadButton(bookCard) {
+function createReadButton(bookCard, book) {
     const readContainer = document.createElement("div"); // create button container
-    readContainer.classList.add("read-unread-container");
+    readContainer.classList.add("read-unread-container"); // "read-unread-container" class
     const readButton = document.createElement("button"); // create button
-    readButton.classList.add("read-unread-button");
-    readButton.textContent = "THIS IS A BUTTON FUCK YEAH";
+    readButton.classList.add("read-unread-button"); // "read-unread-button" class
+    readButton.textContent = "Toggle Read Status"; // text in button
+
+    // readButton.addEventListener('click', () => {
+    //     book.toggleRead();
+    // })
+
     readContainer.appendChild(readButton);
     bookCard.appendChild(readContainer);
     return readButton;
