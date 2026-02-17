@@ -12,10 +12,12 @@ Working on the library project from [The Odin Project](https://www.theodinprojec
 - [X] figure out adding books to the HTML
 - [X] change read/unread from picklist to single checkbox
 - [X] how can I add an icon to the cards when they're being created via javascript?
-- [ ] change the checkbox to status: read/unread on bookCard
-- [ ] style cards, changing styling/capitalization of headers for labels
+- [X] change the checkbox to status: read/unread on bookCard
+- [X] change styling/capitalization of headers for labels
 - [ ] add functionality for changing read/unread from card, pushing update to library
 - [ ] style the container the bookCards are held in, grid v flex?
+- [ ] dark mode
+- [ ] remove all the console.log from script
 
 ### books
 - title

@@ -65,28 +65,35 @@ function updateLibraryPage(myLibrary    ) {
                 } else if (book.read === false) {
                     bookValue.textContent = `Status: Unread`;
                 };
-                // const bookRead = document.createElement("input");
-                // bookRead.type = "checkbox";
-                // bookRead.classList.add("book-status");
-                // bookRead.checked = book.read;
-                // bookValue.appendChild(bookRead);
                 bookCard.appendChild(bookValue);
             } else {
             const bookValue = document.createElement("div");
             bookValue.classList.add("book-value");
             cardLabel = `${key}`;
-            bookValue.textContent = `${labels[cardLabel]}${book[key]}`;
+            bookValue.innerHTML = `<strong>${labels[cardLabel]}</strong>${book[key]}`;
             bookCard.appendChild(bookValue);
             }
         }
+        createReadButton(bookCard);
         createDeleteButton(bookCard, book);
     }
+}
+
+// CREATE READ BUTTON FOR EACH BOOK CARD
+function createReadButton(bookCard) {
+    const readContainer = document.createElement("div"); // create button container
+    readContainer.classList.add("read-unread-container");
+    const readButton = document.createElement("button"); // create button
+    readButton.classList.add("read-unread-button");
+    readButton.textContent = "THIS IS A BUTTON FUCK YEAH";
+    readContainer.appendChild(readButton);
+    bookCard.appendChild(readContainer);
+    return readButton;
 }
 
 // CREATE DELETE BUTTON FOR EACH BOOK CARD
 // created to take too much functionality out of updateLibraryPage
 function createDeleteButton(bookCard, book) {
-    console.log(book.id); //testing to make sure book.id is being passed correctly
     const deleteContainer = document.createElement("div"); // create button container
     deleteContainer.classList.add("delete-container"); // add container class
     const deleteButton = document.createElement("button"); // create button
