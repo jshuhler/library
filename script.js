@@ -4,6 +4,7 @@ const myLibrary = [];
 // VARIABLES
 let book;
 let bookCard;
+let bookStatus;
 
 // CREATING BOOK OBJECTS
 const bookContainer = document.querySelector(".book-container");
@@ -37,7 +38,7 @@ function addToLibrary(title, author, pages, read) {
     myLibrary.push(newBook);
 }
 
-// UPDATE LIBRARY DISPLAY AND ADD BOOK CARD
+// CREATE BOOK CARD AND ADD IT TO LIBRARY PAGE WITH EACH MODAL SUBMIT
 function updateLibraryPage(myLibrary) {
     bookContainer.innerHTML = "";
     for (const book of myLibrary) {
@@ -48,8 +49,14 @@ function updateLibraryPage(myLibrary) {
             if (key === 'id') { // so the id doesn't appear on the bookCard
                 continue;
             } else if (key === 'read') { // the empty `" "` in the DOM is coming from this code block somewhere.
+                // if the key is read, then create the div to put stuff in, then do an if statement if the book.read === true, append `Status: Read`, otherwise, `Status: Unread`
                 const bookValue = document.createElement("div");
                 bookValue.classList.add("book-value");
+
+                if (book.read === true) {
+
+                }
+
                 const bookRead = document.createElement("input");
                 bookRead.type = "checkbox";
                 bookRead.classList.add("book-status");
@@ -123,7 +130,7 @@ submitModalButton.addEventListener('click', (e) => {
 });
 
 // TESTING
-addToLibrary("House of Leaves","Mark Z. Danielewski","709","unread");
-addToLibrary("Annihilation","Jeff VanderMeer","208","read");
-addToLibrary("The Hobbit","JRR Tolkien","295","read");
+addToLibrary("House of Leaves","Mark Z. Danielewski","709",false);
+addToLibrary("Annihilation","Jeff VanderMeer","208",true);
+addToLibrary("The Hobbit","JRR Tolkien","295",true);
 updateLibraryPage(myLibrary);

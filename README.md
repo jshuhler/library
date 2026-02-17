@@ -11,9 +11,11 @@ Working on the library project from [The Odin Project](https://www.theodinprojec
 - [X] split the above add to library array piece into a separate function so it can be called individually.
 - [X] figure out adding books to the HTML
 - [X] change read/unread from picklist to single checkbox
-- [ ] add functionality for changing read/unread from card, pushing update to library
+- [X] how can I add an icon to the cards when they're being created via javascript?
+- [ ] change the checkbox to status: read/unread on bookCard
 - [ ] style cards, changing styling/capitalization of headers for labels
-- [ ] how can I add an icon to the cards when they're being created via javascript?
+- [ ] add functionality for changing read/unread from card, pushing update to library
+- [ ] style the container the bookCards are held in, grid v flex?
 
 ### books
 - title
