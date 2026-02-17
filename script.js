@@ -52,6 +52,7 @@ function addToLibrary(title, author, pages, read) {
 
 // CREATE BOOK CARD AND ADD IT TO LIBRARY PAGE WITH EACH MODAL SUBMIT
 function updateLibraryPage(myLibrary) {
+    // let buttonContainer;
     bookContainer.innerHTML = "";
     for (const book of myLibrary) {
         const bookCard = document.createElement("div");
@@ -80,37 +81,37 @@ function updateLibraryPage(myLibrary) {
             } else {
                 continue;
             }  
-        }
-        createReadButton(bookCard);
-        createDeleteButton(bookCard, book);
+        }        
+        const readToggle = createReadButton(bookCard, book);
+        createDeleteButton(bookCard, book, readToggle);
     };
 };
 
 // CREATE READ BUTTON FOR EACH BOOK CARD
 function createReadButton(bookCard, book) {
-    const readContainer = document.createElement("div"); // create button container
-    readContainer.classList.add("read-unread-container"); // "read-unread-container" class
+    const buttonContainer = document.createElement("div"); // create button container
+    buttonContainer.classList.add("button-container"); // add container class
     const readButton = document.createElement("button"); // create button
     readButton.classList.add("read-unread-button"); // "read-unread-button" class
     readButton.textContent = "Toggle Read Status"; // text in button
 
-    // readButton.addEventListener('click', () => {
-    //     book.toggleRead();
-    // })
+    readButton.addEventListener('click', () => {
+        console.log("click")
+    })
 
-    readContainer.appendChild(readButton);
-    bookCard.appendChild(readContainer);
-    return readButton;
+    buttonContainer.appendChild(readButton);
+    bookCard.appendChild(buttonContainer);
+    return buttonContainer;
 }
 
 // CREATE DELETE BUTTON FOR EACH BOOK CARD
 // created to take too much functionality out of updateLibraryPage
-function createDeleteButton(bookCard, book) {
-    const deleteContainer = document.createElement("div"); // create button container
-    deleteContainer.classList.add("delete-container"); // add container class
+function createDeleteButton(bookCard, book, buttonContainer) {
+    // const buttonContainer = document.createElement("div"); // create button container
+    // buttonContainer.classList.add("button-container"); // add container class
     const deleteButton = document.createElement("button"); // create button
     deleteButton.classList.add("delete-button"); // add button class
-    deleteButton.setAttribute("data-id",book.id);
+    deleteButton.setAttribute("data-id",book.id); //data attribute for deletion logic
     
     deleteButton.addEventListener('click', () => { // adding event listener for the button immediately after it's created before nodes added to it
         console.log("Trash can click");
@@ -129,10 +130,10 @@ function createDeleteButton(bookCard, book) {
     deleteIcon.setAttribute("src","./img/trashcan.png"); // img attribute
     deleteIcon.setAttribute("alt","An image of a trashcan"); // img attribute
     deleteButton.appendChild(deleteIcon); // nest img in button
-    deleteContainer.appendChild(deleteButton); // nest button in container
-    bookCard.appendChild(deleteContainer); // nest button in book-card
-    return deleteButton;
-}
+    buttonContainer.appendChild(deleteButton); // nest button in container
+    // bookCard.appendChild(buttonContainer); // nest button in book-card
+    // return deleteButton;
+};
 
 // OPEN NEW BOOK MODAL
 newBookButton.addEventListener('click',() => {
