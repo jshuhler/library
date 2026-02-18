@@ -41,7 +41,17 @@ function Book(title, author, pages, read) {
 };
 
 Book.prototype.toggleRead = function () {
-    console.log(`${this.title} toggleRead just happened.`);
+    console.log(`${this.title} toggle press`);
+    console.log(`before press: ${this.read}`)
+    console.log(myLibrary)
+    if (this.read === true) {
+        this.read = false; 
+    } else if (this.read === false) {
+        this.read = true;
+    }
+    console.log(`after press: ${this.read}`)
+    updateLibraryPage(myLibrary);
+    console.log(myLibrary)
 }
 
 // ADDING A BOOK TO LIBRARY ARRAY
@@ -82,8 +92,8 @@ function updateLibraryPage(myLibrary) {
                 continue;
             }  
         }        
-        const readToggle = createReadButton(bookCard, book);
-        createDeleteButton(bookCard, book, readToggle);
+        const read = createReadButton(bookCard, book);
+        createDeleteButton(bookCard, book, read);
     };
 };
 
@@ -94,10 +104,11 @@ function createReadButton(bookCard, book) {
     const readButton = document.createElement("button"); // create button
     readButton.classList.add("read-unread-button"); // "read-unread-button" class
     readButton.textContent = "Toggle Read Status"; // text in button
+    readButton.setAttribute("data-id",book.id);
 
     readButton.addEventListener('click', () => {
-        console.log("click")
-    })
+        book.toggleRead();
+    });
 
     buttonContainer.appendChild(readButton);
     bookCard.appendChild(buttonContainer);
@@ -131,8 +142,6 @@ function createDeleteButton(bookCard, book, buttonContainer) {
     deleteIcon.setAttribute("alt","An image of a trashcan"); // img attribute
     deleteButton.appendChild(deleteIcon); // nest img in button
     buttonContainer.appendChild(deleteButton); // nest button in container
-    // bookCard.appendChild(buttonContainer); // nest button in book-card
-    // return deleteButton;
 };
 
 // OPEN NEW BOOK MODAL
