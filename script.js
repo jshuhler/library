@@ -41,18 +41,18 @@ function Book(title, author, pages, read) {
 };
 
 Book.prototype.toggleRead = function () {
-    console.log(`${this.title} toggle press`);
-    console.log('myLibrary read value:', this.read);
-    console.log(myLibrary);
-    console.log(`before press: ${this.read}`)
+    // console.log(`${this.title} toggle press`);
+    // console.log('myLibrary read value:', this.read);
+    // console.log(myLibrary);
+    // console.log(`before press: ${this.read}`)
     if (this.read === true) {
         this.read = false; 
     } else if (this.read === false) {
         this.read = true;
     }
-    console.log(`after press: ${this.read}`)
+    // console.log(`after press: ${this.read}`)
     updateLibraryPage(myLibrary);
-    console.log(myLibrary)
+    // console.log(myLibrary)
 }
 
 // ADDING A BOOK TO LIBRARY ARRAY
@@ -126,12 +126,12 @@ function createDeleteButton(bookCard, book, buttonContainer) {
     deleteButton.setAttribute("data-id",book.id); //data attribute for deletion logic
     
     deleteButton.addEventListener('click', () => { // adding event listener for the button immediately after it's created before nodes added to it
-        console.log("Trash can click");
-        console.log(myLibrary);
+        // console.log("Trash can click");
+        // console.log(myLibrary);
         const bookToRemove = myLibrary.find((currentBook) => currentBook.id === book.id);
-        console.log(bookToRemove);
+        // console.log(bookToRemove);
         const index = myLibrary.indexOf(bookToRemove);
-        console.log(index);
+        // console.log(index);
         if (index > -1) { // only splice array when item is found
             myLibrary.splice(index, 1); 
         };
@@ -170,13 +170,13 @@ submitModalButton.addEventListener('click', (e) => {
 
 // DARK MODE
 function setTheme() {
-    const newTheme = body.classList.contains("dark-mode") ? "" : "dark-mode";
+    const body = document.body;
+    const newTheme = body.className === "dark-mode" ? "" : "dark-mode";
+    body.className = newTheme;
 }
 
-const lightDarkMode = document.querySelector(".light-dark-mode")
-lightDarkMode.addEventListener('click', () => {
+document.querySelector(".light-dark-mode").addEventListener('click', setTheme);
 
-})
 
 // TESTING
 addToLibrary("House of Leaves","Mark Z. Danielewski","709",false);
