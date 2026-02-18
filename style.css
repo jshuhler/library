@@ -103,6 +103,7 @@ a:hover {
 
 .book-container {
     display: flex;
+    flex-wrap: wrap;
     margin: 30px;
 }
 
@@ -114,6 +115,7 @@ a:hover {
     padding: 15px;
     box-shadow: var(--box-shadow);
     border-radius: 16px;
+    min-width: 300px;
 }
 
 .book-value {
@@ -124,6 +126,13 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+}
+
+.read-unread-button {
+    border-radius: var(--button-radius);
+    padding: 3px 6px;
+    border: solid 1px;
 }
 
 .book-card .delete-button,

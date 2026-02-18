@@ -42,8 +42,9 @@ function Book(title, author, pages, read) {
 
 Book.prototype.toggleRead = function () {
     console.log(`${this.title} toggle press`);
+    console.log('myLibrary read value:', this.read);
+    console.log(myLibrary);
     console.log(`before press: ${this.read}`)
-    console.log(myLibrary)
     if (this.read === true) {
         this.read = false; 
     } else if (this.read === false) {
