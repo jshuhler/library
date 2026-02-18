@@ -168,6 +168,16 @@ submitModalButton.addEventListener('click', (e) => {
     e.preventDefault();
 });
 
+// DARK MODE
+function setTheme() {
+    const newTheme = body.classList.contains("dark-mode") ? "" : "dark-mode";
+}
+
+const lightDarkMode = document.querySelector(".light-dark-mode")
+lightDarkMode.addEventListener('click', () => {
+
+})
+
 // TESTING
 addToLibrary("House of Leaves","Mark Z. Danielewski","709",false);
 addToLibrary("Annihilation","Jeff VanderMeer","208",true);

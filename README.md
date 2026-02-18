@@ -14,8 +14,8 @@ Working on the library project from [The Odin Project](https://www.theodinprojec
 - [X] how can I add an icon to the cards when they're being created via javascript?
 - [X] change the checkbox to status: read/unread on bookCard
 - [X] change styling/capitalization of headers for labels
-- [ ] add functionality for changing read/unread from card, pushing update to library
-- [ ] style the container the bookCards are held in, grid v flex?
+- [X] add functionality for changing read/unread from card, pushing update to library
+- [X] style the container the bookCards are held in, grid v flex?
 - [ ] dark mode
 - [ ] remove all the console.log from script
 
@@ -30,6 +30,7 @@ Working on the library project from [The Odin Project](https://www.theodinprojec
 - it'll have to iterate through the myLibrary array, check each id value for the one that it's looking for, and when it finds it, delete that entire book-card element. Which is going to contain the new delete button that I'm building anyway, so that won't be an issue. I'll be able to use some array method for that.
 
 ### dark mode
+https://www.google.com/search?client=firefox-b-1-d&channel=entpr&q=light%2Fdark+mode+css+html+javascript+
 ```css
 --card-color: #2d2d2d;
 --body-color: #1a1a1a;
