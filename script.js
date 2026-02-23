@@ -151,8 +151,9 @@ newBookButton.addEventListener('click',() => {
 });
 
 // CLOSE NEW BOOK MODAL WITHOUT ADDING BOOK
-closeModalButton.addEventListener('click',() => { //the close button is clearing the library page right now for some reason?
+closeModalButton.addEventListener('click',(e) => { //the close button is clearing the library page right now for some reason?
     dialog.close();
+    e.preventDefault();
 });
 
 // CLOSE MODAL AND ADD NEW BOOK TO LIBRARY
