@@ -28,32 +28,28 @@ const labels = {
     pages: "Page Count: ",
 };
 
-// CREATE A BOOK CONSTRUCTOR
-function Book(title, author, pages, read) {
-    if (!new.target) {
-        throw Error("You must use the 'new' operator to call the constructor.");
-    };
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = crypto.randomUUID();
-};
+// CREATE A BOOK CLASS
+class Book {
+    constructor(title,author,pages,read) {
+        if (!new.target) {
+            throw Error("You must use the 'new' operator to call the constructor.");
+        };
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = crypto.randomUUID();
 
-Book.prototype.toggleRead = function () {
-    // console.log(`${this.title} toggle press`);
-    // console.log('myLibrary read value:', this.read);
-    // console.log(myLibrary);
-    // console.log(`before press: ${this.read}`)
-    if (this.read === true) {
-        this.read = false; 
-    } else if (this.read === false) {
-        this.read = true;
-    }
-    // console.log(`after press: ${this.read}`)
-    updateLibraryPage(myLibrary);
-    // console.log(myLibrary)
-}
+        Book.prototype.toggleRead = function () {
+            if (this.read === true) {
+                this.read = false;
+            } else if (this.read === false) {
+                this.read = true;
+            }
+            updateLibraryPage(myLibrary);
+        };
+    };
+};
 
 // ADDING A BOOK TO LIBRARY ARRAY
 function addToLibrary(title, author, pages, read) {
@@ -63,7 +59,6 @@ function addToLibrary(title, author, pages, read) {
 
 // CREATE BOOK CARD AND ADD IT TO LIBRARY PAGE WITH EACH MODAL SUBMIT
 function updateLibraryPage(myLibrary) {
-    // let buttonContainer;
     bookContainer.innerHTML = "";
     for (const book of myLibrary) {
         const bookCard = document.createElement("div");
@@ -117,21 +112,14 @@ function createReadButton(bookCard, book) {
 }
 
 // CREATE DELETE BUTTON FOR EACH BOOK CARD
-// created to take too much functionality out of updateLibraryPage
 function createDeleteButton(bookCard, book, buttonContainer) {
-    // const buttonContainer = document.createElement("div"); // create button container
-    // buttonContainer.classList.add("button-container"); // add container class
     const deleteButton = document.createElement("button"); // create button
     deleteButton.classList.add("delete-button"); // add button class
     deleteButton.setAttribute("data-id",book.id); //data attribute for deletion logic
     
     deleteButton.addEventListener('click', () => { // adding event listener for the button immediately after it's created before nodes added to it
-        // console.log("Trash can click");
-        // console.log(myLibrary);
         const bookToRemove = myLibrary.find((currentBook) => currentBook.id === book.id);
-        // console.log(bookToRemove);
         const index = myLibrary.indexOf(bookToRemove);
-        // console.log(index);
         if (index > -1) { // only splice array when item is found
             myLibrary.splice(index, 1); 
         };
