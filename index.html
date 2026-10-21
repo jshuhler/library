@@ -26,20 +26,20 @@
         <div class="book-container">
         </div>
         <dialog>
-            <form action="" method="" class="add-book">
+            <form action="" method="" class="add-book" novalidate>
                 <fieldset>
                     <legend>Add a Book to Your Library</legend>
                     <div class="form-item" id="form-title">
                         <label for="title">Title</label>
-                        <input type="text" name="title" id="title">
+                        <input type="text" name="title" id="title" class="required-field" required>
                     </div>
                     <div class="form-item" id="form-author">
                         <label for="author">Author</label>
-                        <input type="text" name="author" id="author">
+                        <input type="text" name="author" id="author" class="required-field" required>
                     </div>
                     <div class="form-item" id="form-pages">
                         <label for="pages">Pages</label>
-                        <input type="number" name="pages" id="pages">
+                        <input type="number" min="1" name="pages" id="pages" class="required-field" required>
                     </div>
                     <!-- <div class="form-item" id="form-read">
                         <label for="read">Book Status</label>
@@ -56,7 +56,7 @@
                 </fieldset>
                 <div class="modal-buttons">
                     <button type="submit" id="modal-submit">Add Book</button>
-                    <button tyep="button" id="modal-close">Close</button>
+                    <button type="button" id="modal-close">Close</button>
                 </div>
             </form>
         </dialog>

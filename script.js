@@ -145,11 +145,12 @@ closeModalButton.addEventListener('click',(e) => { //the close button is clearin
 });
 
 // CLOSE MODAL AND ADD NEW BOOK TO LIBRARY
-submitModalButton.addEventListener('click', (e) => {
+addBookModal.addEventListener('submit', (e) => {
     modalTitle = document.getElementById('title').value; // new book title
     modalAuthor = document.getElementById('author').value; // new book author
     modalPages = document.getElementById('pages').value; //new book page count
     modalRead = document.getElementById('read').checked; // new book read status
+    submissionValidation();
     addToLibrary(modalTitle, modalAuthor, modalPages, modalRead);
     updateLibraryPage(myLibrary);
     addBookModal.reset();
@@ -162,10 +163,39 @@ function setTheme() {
     const body = document.body;
     const newTheme = body.className === "dark-mode" ? "" : "dark-mode";
     body.className = newTheme;
-}
+};
 
 document.querySelector(".light-dark-mode").addEventListener('click', setTheme);
 
+// FORM VALIDATION
+const formTitle = document.getElementById('title');
+const formAuthor = document.getElementById('author');
+const formPages = document.getElementById('pages');
+const requiredField = document.querySelector(".required-field");
+
+function submissionValidation() {
+    if (formTitle.validity.valueMissing) {
+        formTitle.setCustomValidity("Books usually have titles!");
+    } else {
+        formTitle.setCustomValidity("");
+    };
+    const formTitleValidity = formTitle.reportValidity();
+    console.log(formTitleValidity)
+    
+    if (formAuthor.validity.valueMissing) {
+        formAuthor.setCustomValidity("Someone had to write this!");
+    } else {
+        formAuthor.setCustomValidity("");
+    };
+    formAuthor.reportValidity();
+
+    if (formPages.validity.valueMissing) {
+        formPages.setCustomValidity("Books have to have some amount of pages!");
+    } else {
+        formPages.setCustomValidity("");
+    };
+    formPages.reportValidity();
+};
 
 // TESTING
 addToLibrary("House of Leaves","Mark Z. Danielewski","709",false);
