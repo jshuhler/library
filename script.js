@@ -174,25 +174,28 @@ const formPages = document.getElementById('pages');
 const requiredField = document.querySelector(".required-field");
 
 function submissionValidation() {
+    // console.log(formTitle.validity)
+    // if (!formTitle.validity.valueMissing) {
+    formTitle.setCustomValidity("");
     if (formTitle.validity.valueMissing) {
         formTitle.setCustomValidity("Books usually have titles!");
-    } else {
-        formTitle.setCustomValidity("");
+        return;
     };
-    const formTitleValidity = formTitle.reportValidity();
-    console.log(formTitleValidity)
+    formTitle.reportValidity();
     
-    if (formAuthor.validity.valueMissing) {
-        formAuthor.setCustomValidity("Someone had to write this!");
-    } else {
+    // console.log(formAuthor.validity)
+    if (!formAuthor.validity.valueMissing) {
         formAuthor.setCustomValidity("");
+    } else if (formAuthor.validity.valueMissing) {
+        formAuthor.setCustomValidity("Books usually have titles!");
     };
     formAuthor.reportValidity();
 
-    if (formPages.validity.valueMissing) {
-        formPages.setCustomValidity("Books have to have some amount of pages!");
-    } else {
+    console.log(formPages.validity)
+    if (!formPages.validity.valueMissing) {
         formPages.setCustomValidity("");
+    } else if (formPages.validity.valueMissing) {
+        formPages.setCustomValidity("Books usually have titles!");
     };
     formPages.reportValidity();
 };
