@@ -174,12 +174,11 @@ const formPages = document.getElementById('pages');
 const requiredField = document.querySelector(".required-field");
 
 function submissionValidation() {
-    // console.log(formTitle.validity)
-    // if (!formTitle.validity.valueMissing) {
-    formTitle.setCustomValidity("");
-    if (formTitle.validity.valueMissing) {
-        formTitle.setCustomValidity("Books usually have titles!");
-        return;
+    console.log(formTitle.validity)
+    if (!formTitle.validity.valueMissing) {
+        formTitle.setCustomValidity("");
+    } else if (formTitle.validity.valueMissing) {
+        formTitle.setCustomValidity("Books usually have titles!")
     };
     formTitle.reportValidity();
     
@@ -187,7 +186,7 @@ function submissionValidation() {
     if (!formAuthor.validity.valueMissing) {
         formAuthor.setCustomValidity("");
     } else if (formAuthor.validity.valueMissing) {
-        formAuthor.setCustomValidity("Books usually have titles!");
+        formAuthor.setCustomValidity("Someone had to write this!");
     };
     formAuthor.reportValidity();
 
@@ -195,9 +194,10 @@ function submissionValidation() {
     if (!formPages.validity.valueMissing) {
         formPages.setCustomValidity("");
     } else if (formPages.validity.valueMissing) {
-        formPages.setCustomValidity("Books usually have titles!");
+        formPages.setCustomValidity("It has to have some amount of pages!");
     };
     formPages.reportValidity();
+    checkValidity
 };
 
 // TESTING
