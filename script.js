@@ -146,16 +146,17 @@ closeModalButton.addEventListener('click',(e) => { //the close button is clearin
 
 // CLOSE MODAL AND ADD NEW BOOK TO LIBRARY
 addBookModal.addEventListener('submit', (e) => {
+    e.preventDefault();
     modalTitle = document.getElementById('title').value; // new book title
     modalAuthor = document.getElementById('author').value; // new book author
     modalPages = document.getElementById('pages').value; //new book page count
     modalRead = document.getElementById('read').checked; // new book read status
-    submissionValidation();
+    submissionValidation(e);
+    // I need to figure out how to stop the submit listener here if there is something wrong on the form
     addToLibrary(modalTitle, modalAuthor, modalPages, modalRead);
     updateLibraryPage(myLibrary);
     addBookModal.reset();
     dialog.close();
-    e.preventDefault();
 });
 
 // DARK MODE
@@ -168,36 +169,45 @@ function setTheme() {
 document.querySelector(".light-dark-mode").addEventListener('click', setTheme);
 
 // FORM VALIDATION
+const form = document.querySelector("form")
 const formTitle = document.getElementById('title');
 const formAuthor = document.getElementById('author');
 const formPages = document.getElementById('pages');
 const requiredField = document.querySelector(".required-field");
 
-function submissionValidation() {
-    console.log(formTitle.validity)
-    if (!formTitle.validity.valueMissing) {
-        formTitle.setCustomValidity("");
-    } else if (formTitle.validity.valueMissing) {
-        formTitle.setCustomValidity("Books usually have titles!")
-    };
-    formTitle.reportValidity();
+// function submissionValidation() {
+//     console.log(formTitle.validity)
+//     if (!formTitle.validity.valueMissing) {
+//         formTitle.setCustomValidity("");
+//     } else if (formTitle.validity.valueMissing) {
+//         formTitle.setCustomValidity("Books usually have titles!")
+//     };
+//     formTitle.reportValidity();
     
-    // console.log(formAuthor.validity)
-    if (!formAuthor.validity.valueMissing) {
-        formAuthor.setCustomValidity("");
-    } else if (formAuthor.validity.valueMissing) {
-        formAuthor.setCustomValidity("Someone had to write this!");
-    };
-    formAuthor.reportValidity();
+//     // console.log(formAuthor.validity)
+//     if (!formAuthor.validity.valueMissing) {
+//         formAuthor.setCustomValidity("");
+//     } else if (formAuthor.validity.valueMissing) {
+//         formAuthor.setCustomValidity("Someone had to write this!");
+//     };
+//     formAuthor.reportValidity();
 
-    console.log(formPages.validity)
-    if (!formPages.validity.valueMissing) {
-        formPages.setCustomValidity("");
-    } else if (formPages.validity.valueMissing) {
-        formPages.setCustomValidity("It has to have some amount of pages!");
+//     if (!formPages.validity.valueMissing) {
+//         formPages.setCustomValidity("");
+//     } else if (formPages.validity.valueMissing) {
+//         formPages.setCustomValidity("It has to have some amount of pages!");
+//     };
+//     formPages.reportValidity();
+// };
+
+function submissionValidation(e) {
+    if (formTitle.value === "") {
+        formTitle.setCustomValidity("Books usuallly have titles!");
+    } else {
+        formTitle.setCustomValidity("");
     };
-    formPages.reportValidity();
-    checkValidity
+    console.log(`formTitle validity: ${formTitle.reportValidity()}`)
+    return formTitle.reportValidity();
 };
 
 // TESTING
