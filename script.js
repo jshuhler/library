@@ -151,22 +151,27 @@ addBookModal.addEventListener('submit', (e) => {
     modalAuthor = document.getElementById('author').value; // new book author
     modalPages = document.getElementById('pages').value; //new book page count
     modalRead = document.getElementById('read').checked; // new book read status
-    submissionValidation();
-    // if (form.reportValidity() === false) {
-    //     console.log(form.validity)
+    // console.log(`form Validity is: `, form.validity)
+    // if (form.checkValidity() === false) {
     //     if (formTitle.validity.valueMissing) {
-    //         formTitle.setCustomValidity("Books must have a title.");
+    //         formTitle.setCustomValidity("What's this book called?");
     //     }
     //     if (formAuthor.validity.valueMissing) {
-    //         formAuthor.setCustomValidity("Someone had to write this.");
+    //         formAuthor.setCustomValidity("Who wrote this?");
     //     }
-    // }
+    //     if (formPages.validity.valueMissing) {
+    //         formPages.setCustomValidity("It can't just be a cover.")
+    //     }
+    // } else {
     
-    // something like if there is a validity issue, show the error, otherwise do the below:
+    // };
+    submissionValidation();
     addToLibrary(modalTitle, modalAuthor, modalPages, modalRead);
     updateLibraryPage(myLibrary);
     addBookModal.reset();
     dialog.close();
+    // something like if there is a validity issue, show the error, otherwise do the below:
+    
 });
 
 // FORM VALIDATION
@@ -177,12 +182,17 @@ const formPages = document.getElementById('pages');
 const requiredField = document.querySelector(".required-field");
 
 function submissionValidation() {
-    if (formTitle.value !== "") {
-        formTitle.setCustomValidity("");
-    } else {
+    if (formTitle.validity.valueMissing) {
         formTitle.setCustomValidity("Books must have a title.");
+        console.log(`formTitle.validity: `,formTitle.validity)
+        console.log(`formTitle.willValidate: `,formTitle.willValidate)
+        console.log(`formTitle.checkValidity: `,formTitle.checkValidity())
+    } else {
+        formTitle.setCustomValidity("");
+        console.log(`formTitle.validity: `,formTitle.validity)
+        console.log(`formTitle.willValidate: `,formTitle.willValidate)
+        console.log(`formTitle.checkValidity: `,formTitle.checkValidity())
     };
-    console.log(formTitle.validity)
     formTitle.reportValidity();
 };
 
