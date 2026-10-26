@@ -151,13 +151,40 @@ addBookModal.addEventListener('submit', (e) => {
     modalAuthor = document.getElementById('author').value; // new book author
     modalPages = document.getElementById('pages').value; //new book page count
     modalRead = document.getElementById('read').checked; // new book read status
-    submissionValidation(e);
-    // I need to figure out how to stop the submit listener here if there is something wrong on the form
+    submissionValidation();
+    // if (form.reportValidity() === false) {
+    //     console.log(form.validity)
+    //     if (formTitle.validity.valueMissing) {
+    //         formTitle.setCustomValidity("Books must have a title.");
+    //     }
+    //     if (formAuthor.validity.valueMissing) {
+    //         formAuthor.setCustomValidity("Someone had to write this.");
+    //     }
+    // }
+    
+    // something like if there is a validity issue, show the error, otherwise do the below:
     addToLibrary(modalTitle, modalAuthor, modalPages, modalRead);
     updateLibraryPage(myLibrary);
     addBookModal.reset();
     dialog.close();
 });
+
+// FORM VALIDATION
+const form = document.querySelector("form")
+const formTitle = document.getElementById('title');
+const formAuthor = document.getElementById('author');
+const formPages = document.getElementById('pages');
+const requiredField = document.querySelector(".required-field");
+
+function submissionValidation() {
+    if (formTitle.value !== "") {
+        formTitle.setCustomValidity("");
+    } else {
+        formTitle.setCustomValidity("Books must have a title.");
+    };
+    console.log(formTitle.validity)
+    formTitle.reportValidity();
+};
 
 // DARK MODE
 function setTheme() {
@@ -167,48 +194,6 @@ function setTheme() {
 };
 
 document.querySelector(".light-dark-mode").addEventListener('click', setTheme);
-
-// FORM VALIDATION
-const form = document.querySelector("form")
-const formTitle = document.getElementById('title');
-const formAuthor = document.getElementById('author');
-const formPages = document.getElementById('pages');
-const requiredField = document.querySelector(".required-field");
-
-// function submissionValidation() {
-//     console.log(formTitle.validity)
-//     if (!formTitle.validity.valueMissing) {
-//         formTitle.setCustomValidity("");
-//     } else if (formTitle.validity.valueMissing) {
-//         formTitle.setCustomValidity("Books usually have titles!")
-//     };
-//     formTitle.reportValidity();
-    
-//     // console.log(formAuthor.validity)
-//     if (!formAuthor.validity.valueMissing) {
-//         formAuthor.setCustomValidity("");
-//     } else if (formAuthor.validity.valueMissing) {
-//         formAuthor.setCustomValidity("Someone had to write this!");
-//     };
-//     formAuthor.reportValidity();
-
-//     if (!formPages.validity.valueMissing) {
-//         formPages.setCustomValidity("");
-//     } else if (formPages.validity.valueMissing) {
-//         formPages.setCustomValidity("It has to have some amount of pages!");
-//     };
-//     formPages.reportValidity();
-// };
-
-function submissionValidation(e) {
-    if (formTitle.value === "") {
-        formTitle.setCustomValidity("Books usuallly have titles!");
-    } else {
-        formTitle.setCustomValidity("");
-    };
-    console.log(`formTitle validity: ${formTitle.reportValidity()}`)
-    return formTitle.reportValidity();
-};
 
 // TESTING
 addToLibrary("House of Leaves","Mark Z. Danielewski","709",false);
