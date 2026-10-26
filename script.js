@@ -187,11 +187,13 @@ function submissionValidation() {
         console.log(`formTitle.validity: `,formTitle.validity)
         console.log(`formTitle.willValidate: `,formTitle.willValidate)
         console.log(`formTitle.checkValidity: `,formTitle.checkValidity())
+        console.log(formTitle.value)
     } else {
         formTitle.setCustomValidity("");
         console.log(`formTitle.validity: `,formTitle.validity)
         console.log(`formTitle.willValidate: `,formTitle.willValidate)
         console.log(`formTitle.checkValidity: `,formTitle.checkValidity())
+        console.log(formTitle.value)
     };
     formTitle.reportValidity();
 };
