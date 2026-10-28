@@ -152,16 +152,48 @@ addBookModal.addEventListener('submit', (e) => {
     modalPages = document.getElementById('pages').value; //new book page count
     modalRead = document.getElementById('read').checked; // new book read status
 
-    if (formTitle.validity.valueMissing) {
-        formTitle.setCustomValidity("Books must have a title.");
-    } else {
-        formTitle.setCustomValidity("");
-        addToLibrary(modalTitle, modalAuthor, modalPages, modalRead);
-        updateLibraryPage(myLibrary);
-        addBookModal.reset();
-        dialog.close();
-    };
-    formTitle.reportValidity();
+    for (const input of formInput) {
+        console.log(input.id);
+        if (input.id === "title") {
+            if (input.validity.valueMissing) {
+                input.setCustomValidity("Books must have titles.");
+                input.reportValidity();
+                continue;
+            } else {
+                input.setCustomValidity("");
+            }
+        } else if (input.id === "author") {
+            if (input.validity.valueMissing) {
+                input.setCustomValidity("Books are usually written by someone.");
+                input.reportValidity();
+                continue;
+            } else {
+                input.setCustomValidity("");
+            }
+        } else if (input.id === "pages") {
+            if (input.validity.valueMissing) {
+                input.setCustomValidity("Most books usually have pages in them.");
+                input.reportValidity();
+                continue;
+            } else {
+                input.setCustomValidity("");
+            }
+        };
+        // input.reportValidity();
+    }
+
+    // if (formTitle.validity.valueMissing) {
+    //     formTitle.setCustomValidity("Books must have a title.");
+    // } else {
+
+    // };
+    // formTitle.reportValidity();
+
+    formTitle.setCustomValidity("");
+    addToLibrary(modalTitle, modalAuthor, modalPages, modalRead);
+    updateLibraryPage(myLibrary);
+    addBookModal.reset();
+    dialog.close();
 });
 
 // FORM VALIDATION
@@ -172,23 +204,23 @@ const formPages = document.getElementById('pages');
 // const requiredField = document.querySelector("");
 const formInput = document.querySelectorAll(".required-field")
 
-function submissionValidation() {
-    // if (formTitle.validity.valueMissing) {
-    //     formTitle.setCustomValidity("Books must have a title.");
-    //     console.log(`formTitle.validity: `,formTitle.validity)
-    //     console.log(`formTitle.willValidate: `,formTitle.willValidate)
-    //     console.log(`formTitle.checkValidity: `,formTitle.checkValidity())
-    //     console.log(formTitle.value)
-    // } else {
-    //     formTitle.setCustomValidity("");
-    //     console.log(`formTitle.validity: `,formTitle.validity)
-    //     console.log(`formTitle.willValidate: `,formTitle.willValidate)
-    //     console.log(`formTitle.checkValidity: `,formTitle.checkValidity())
-    //     console.log(formTitle.value)
-    // };
-    // formTitle.reportValidity();
+// function submissionValidation() {
+//     if (formTitle.validity.valueMissing) {
+//         formTitle.setCustomValidity("Books must have a title.");
+//         console.log(`formTitle.validity: `,formTitle.validity)
+//         console.log(`formTitle.willValidate: `,formTitle.willValidate)
+//         console.log(`formTitle.checkValidity: `,formTitle.checkValidity())
+//         console.log(formTitle.value)
+//     } else {
+//         formTitle.setCustomValidity("");
+//         console.log(`formTitle.validity: `,formTitle.validity)
+//         console.log(`formTitle.willValidate: `,formTitle.willValidate)
+//         console.log(`formTitle.checkValidity: `,formTitle.checkValidity())
+//         console.log(formTitle.value)
+//     };
+//     formTitle.reportValidity();
     
-};
+// };
 
 // DARK MODE
 function setTheme() {
