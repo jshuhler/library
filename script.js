@@ -153,74 +153,45 @@ addBookModal.addEventListener('submit', (e) => {
     modalRead = document.getElementById('read').checked; // new book read status
 
     for (const input of formInput) {
-        console.log(input.id);
-        if (input.id === "title") {
-            if (input.validity.valueMissing) {
-                input.setCustomValidity("Books must have titles.");
-                input.reportValidity();
-                continue;
-            } else {
-                input.setCustomValidity("");
-            }
-        } else if (input.id === "author") {
-            if (input.validity.valueMissing) {
-                input.setCustomValidity("Books are usually written by someone.");
-                input.reportValidity();
-                continue;
-            } else {
-                input.setCustomValidity("");
-            }
-        } else if (input.id === "pages") {
-            if (input.validity.valueMissing) {
-                input.setCustomValidity("Most books usually have pages in them.");
-                input.reportValidity();
-                continue;
-            } else {
-                input.setCustomValidity("");
-            }
+        if (form.checkValidity() === true) {
+            addToLibrary(modalTitle, modalAuthor, modalPages, modalRead);
+            updateLibraryPage(myLibrary);
+            addBookModal.reset();
+            dialog.close();
+        } else {
+            if (input.id === "title") {
+                if (input.validity.valueMissing) {
+                    input.setCustomValidity("Books must have a title.");
+                    input.reportValidity();
+                    console.log(input.checkValidity())
+                } else {
+                    input.setCustomValidity("");
+                };
+            } else if (input.id === "author") {
+                if (input.validity.valueMissing) {
+                    input.setCustomValidity("Books are usually written by someone.");
+                    input.reportValidity();
+                } else {
+                    input.setCustomValidity("");
+                };
+            } else if (input.id === "pages") {
+                if (input.validity.valueMissing) {
+                    input.setCustomValidity("Books usually have pages in them.");
+                    input.reportValidity();
+                } else {
+                    input.setCustomValidity("");
+                };
+            };
         };
-        // input.reportValidity();
-    }
-
-    // if (formTitle.validity.valueMissing) {
-    //     formTitle.setCustomValidity("Books must have a title.");
-    // } else {
-
-    // };
-    // formTitle.reportValidity();
-
-    formTitle.setCustomValidity("");
-    addToLibrary(modalTitle, modalAuthor, modalPages, modalRead);
-    updateLibraryPage(myLibrary);
-    addBookModal.reset();
-    dialog.close();
+    };
 });
 
 // FORM VALIDATION
 const form = document.querySelector("form")
-const formTitle = document.getElementById('title');
-const formAuthor = document.getElementById('author');
-const formPages = document.getElementById('pages');
-// const requiredField = document.querySelector("");
+// const formTitle = document.getElementById('title');
+// const formAuthor = document.getElementById('author');
+// const formPages = document.getElementById('pages');
 const formInput = document.querySelectorAll(".required-field")
-
-// function submissionValidation() {
-//     if (formTitle.validity.valueMissing) {
-//         formTitle.setCustomValidity("Books must have a title.");
-//         console.log(`formTitle.validity: `,formTitle.validity)
-//         console.log(`formTitle.willValidate: `,formTitle.willValidate)
-//         console.log(`formTitle.checkValidity: `,formTitle.checkValidity())
-//         console.log(formTitle.value)
-//     } else {
-//         formTitle.setCustomValidity("");
-//         console.log(`formTitle.validity: `,formTitle.validity)
-//         console.log(`formTitle.willValidate: `,formTitle.willValidate)
-//         console.log(`formTitle.checkValidity: `,formTitle.checkValidity())
-//         console.log(formTitle.value)
-//     };
-//     formTitle.reportValidity();
-    
-// };
 
 // DARK MODE
 function setTheme() {
