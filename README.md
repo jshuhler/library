@@ -4,3 +4,5 @@ Working on the library project from [The Odin Project](https://www.theodinprojec
 [Live preview](https://jshuhler.github.io/library/)
 
 Learned a lot about dealing with and manipulating objects and the values within them during this project as well as implementing a basic light mode/dark mode toggle. 
+
+Updated to include custom validation on the new book form using the constraint validation API.
