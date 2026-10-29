@@ -142,7 +142,12 @@ newBookButton.addEventListener('click',() => {
 closeModalButton.addEventListener('click',(e) => { //the close button is clearing the library page right now for some reason?
     dialog.close();
     e.preventDefault();
+    addBookModal.reset();
 });
+
+// FORM VALIDATION
+const form = document.querySelector("form")
+const formInput = document.querySelectorAll(".required-field")
 
 // CLOSE MODAL AND ADD NEW BOOK TO LIBRARY
 addBookModal.addEventListener('submit', (e) => {
@@ -163,7 +168,7 @@ addBookModal.addEventListener('submit', (e) => {
                 if (input.validity.valueMissing) {
                     input.setCustomValidity("Books must have a title.");
                     input.reportValidity();
-                    console.log(input.checkValidity())
+                    return;
                 } else {
                     input.setCustomValidity("");
                 };
@@ -171,6 +176,7 @@ addBookModal.addEventListener('submit', (e) => {
                 if (input.validity.valueMissing) {
                     input.setCustomValidity("Books are usually written by someone.");
                     input.reportValidity();
+                    return;
                 } else {
                     input.setCustomValidity("");
                 };
@@ -178,6 +184,7 @@ addBookModal.addEventListener('submit', (e) => {
                 if (input.validity.valueMissing) {
                     input.setCustomValidity("Books usually have pages in them.");
                     input.reportValidity();
+                    return;
                 } else {
                     input.setCustomValidity("");
                 };
@@ -186,12 +193,7 @@ addBookModal.addEventListener('submit', (e) => {
     };
 });
 
-// FORM VALIDATION
-const form = document.querySelector("form")
-// const formTitle = document.getElementById('title');
-// const formAuthor = document.getElementById('author');
-// const formPages = document.getElementById('pages');
-const formInput = document.querySelectorAll(".required-field")
+
 
 // DARK MODE
 function setTheme() {
